@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Thay Đổi Thông Tin Giảng Viên</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="id_field">--Mã Số Giảng Viên--</label>
+                    <input type="number" class="form-control" name="" id="id_field" aria-describedby="helpId"
+                        placeholder="Nhập Mã Số của Giảng Viên...">
+                </div>
+                <div class="form-group">
+                    <label for="username_field">--Họ Tên Giảng Viên--</label>
+                    <input type="text" class="form-control" name="" id="fullname_field" aria-describedby="helpId"
+                        placeholder="Nhập đầy đủ họ tên Giảng Viên">
+                </div>
+                <div class="form-group">
+                    <label for="email_field">--Email--</label>
+                    <input type="email" class="form-control" name="" id="email_field" aria-describedby="helpId"
+                        placeholder="Nhập Email của Giảng Viên">
+                </div>
+                <div class="form-group">
+                    <label for="sdt_field">--Số điện thoại--</label>
+                    <input type="tel" class="form-control" name="" id="sdt_field" aria-describedby="helpId"
+                        placeholder="Nhập số điện thoại của Giảng Viên">
+                </div>
+                <div class="form-group">
+                    <label for="career_field">--Ngành giảng dạy--</label>
+                    <select id="career_field" class="form-control">
+                                <option selected>Chọn Ngành Giảng Dạy...</option>
+                                <option>Công Nghệ Thông Tin</option>
+                                <option>Quản Trị Kinh Doanh</option>
+                                <option>Kinh Tế</option>
+                                <option>Luật</option>
+                                <option>Ngôn Ngữ Anh</option>
+                                <option></option>
+                                </select>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="button" style="width: 100%;" class="btn btn-primary" data-toggle="modal"
+                            data-target="#modelId">
+                            Đổi mật khẩu
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <button type="button" id="btnUpdate" style="width: 100%;" onclick="update()"
+                            class="btn btn-success">Đồng ý</button>
+
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" id="btnCancle" style="width: 100%;" onclick="cancle()"
+                            class="btn btn-danger">Từ Chối</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Đổi mật khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="password_field">Nhập pass mới</label>
+                        <input type="password" class="form-control" name="" id="password_field"
+                            aria-describedby="helpId" placeholder="Nhập Mật Khẩu tài khoản">
+                    </div>
+                    <div class="form-group">
+                        <label for="password2_field">Nhập lại pass mới</label>
+                        <input type="password" class="form-control" name="" id="password2_field"
+                            aria-describedby="helpId" placeholder="Nhập lại mật khẩu tài khoản">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancleUpdatePass" class="btn btn-secondary" data-dismiss="modal">Từ Chối</button>
+                    <button type="button"  class="btn btn-primary" onclick="updatePass()">Đồng Ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="index.js"></script>
+
+    <script>
+
+        var iddoc = localStorage.getItem("MSGV");
+        var db = firebase.firestore();
+        var docRef = db.collection("GV").doc(iddoc);
+
+        docRef.get().then(function (doc) {
+            if (doc.exists) {
+                setValueInfo(doc.data().MSGV,
+                    doc.data().Ho_Ten,
+                    doc.data().Email,
+                    doc.data().SDT,
+                    doc.data().Nganh_Day);
+
+                console.log(doc.data().career);
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(function (error) {
+            console.log("Error getting document:", error);
+        });
+        // setValueInfo(iddoc, fullnamedoc, emaildoc,phonenumberdoc,careerdoc);
+       
+        
+        function setValueInfo(id, name, email, sdt, carrer) {
+
+            id_field.value = id;
+            fullname_field.value = name;
+            email_field.value = email;
+            sdt_field.value = sdt;
+            career_field.value = carrer;
+            
+      
+        }
+        
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
