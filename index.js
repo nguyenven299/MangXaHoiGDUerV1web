@@ -42,7 +42,7 @@ function logout() {
 
 async function getAllUser() {
   var html = "";
- 
+
   await db.collection("GV").get().then((querySnapshot) => {
 
     querySnapshot.forEach((doc) => {
@@ -57,7 +57,7 @@ async function getAllUser() {
             <td><button  type="button" class="btn btn-primary" onclick="suaUser('${doc.data().uid}')">Sửa</button></td>
             
             </tr>`
-    
+
 
 
     });
@@ -137,18 +137,20 @@ async function access() {
 
         try {
           const user = firebase.auth().createUserWithEmailAndPassword(email, pass1);
-         
+
           firebase.auth().onAuthStateChanged(user => {
             if (user) {
               this.userId = user.uid
               console.log(user.uid)
               db.collection("GV").doc(userId).set({
-                uid : userId,
+                uid: userId,
                 "MSGV": id,
                 "Ho_Ten": fullname,
                 "Email": email,
                 "SDT": phonenumber,
-                "Nganh_Day": career
+                "Nganh_Day": career,
+                "Hinh_Dai_Dien": "default"
+
 
               })
                 .then(function (docRef) {
@@ -215,55 +217,57 @@ function update() {
   var career = document.getElementById("career_field").value;
   var washingtonRef = db.collection("GV").doc(iddoc);
   // var idTam = id_field.value;
-      
+
   // const idChinh = idTam;
-        // console.log(idChinh);
+  // console.log(idChinh);
   var user = firebase.auth().currentUser;
   // Set the "capital" field of the city 'DC'
   if (fullname.length > 5 && email.length > 5 && phonenumber.length > 5 && career.length >= 5) {
 
-   
+
     db.collection("GV").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        checkId = `${doc.data().id}`; 
+        checkId = `${doc.data().id}`;
         console.log(checkId);
-        
-          try {
-            user.updateEmail(email).then(function () {
-    
-              return washingtonRef.update({
-                "MSGV": id,
-                "Ho_Ten": fullname,
-                "Email": email,
-                "SDT": phonenumber,
-                "Nganh_Day": career
-              })
-                .then(function () {
-                  firebase.auth().on
-                  console.log("Document successfully updated!");
-                  alert("Cập nhật thông tin thành công")
-                  document.getElementById("btnCancle").innerText = "Trở về"
-                }).then(function () {
-                  // Update successful0
-                  // check ="updated"
-                  // alert("Cập nhật thành công")
-    
-    
-                }).catch(function (error) {
-                  // An error happened.
-                });
-            }).catch(function (error) {
-              alert("cập nhập thất bại");
-            });
-          }
-          catch (error) {
-            console.log(error.message)
-          }
-       
+
+        try {
+          user.updateEmail(email).then(function () {
+
+            return washingtonRef.update({
+              "MSGV": id,
+              "Ho_Ten": fullname,
+              "Email": email,
+              "SDT": phonenumber,
+              "Nganh_Day": career,
+              "Hinh_Dai_Dien": "default"
+
+            })
+              .then(function () {
+                firebase.auth().on
+                console.log("Document successfully updated!");
+                alert("Cập nhật thông tin thành công")
+                document.getElementById("btnCancle").innerText = "Trở về"
+              }).then(function () {
+                // Update successful0
+                // check ="updated"
+                // alert("Cập nhật thành công")
+
+
+              }).catch(function (error) {
+                // An error happened.
+              });
+          }).catch(function (error) {
+            alert("cập nhập thất bại");
+          });
+        }
+        catch (error) {
+          console.log(error.message)
+        }
+
       });
-     
+
     });
-  
+
   }
   else {
     alert("Vui lòng nhập đúng thông tin")
@@ -299,18 +303,18 @@ function updatePass() {
       //     capital: true
 
       //   }).then(function () {
-          user.updatePassword(pass1).then(function () {
-            alert("Cập nhật mật khẩu thành công")
-            document.getElementById("cancleUpdatePass").innerText = "Trở về"
-            document.getElementById("btnCancle").innerText = "Trở về"
-          }).catch(function (error) {
-            // An error happened.
-          // });
+      user.updatePassword(pass1).then(function () {
+        alert("Cập nhật mật khẩu thành công")
+        document.getElementById("cancleUpdatePass").innerText = "Trở về"
+        document.getElementById("btnCancle").innerText = "Trở về"
+      }).catch(function (error) {
+        // An error happened.
+        // });
 
-        }).catch(function (error) {
-          // An error happened.
-          window.alert("Có vẻ có lỗi! \nVui lòng thử lại")
-        });
+      }).catch(function (error) {
+        // An error happened.
+        window.alert("Có vẻ có lỗi! \nVui lòng thử lại")
+      });
 
     }
     else {
