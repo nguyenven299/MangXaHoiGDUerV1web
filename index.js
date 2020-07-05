@@ -149,7 +149,7 @@ async function access() {
                 "Email": email,
                 "SDT": phonenumber,
                 "Nganh_Day": career,
-                "Hinh_Dai_Dien": "default"
+                "Anh_Dai_Dien": "default"
 
 
               })
@@ -239,7 +239,7 @@ function update() {
               "Email": email,
               "SDT": phonenumber,
               "Nganh_Day": career,
-              "Hinh_Dai_Dien": "default"
+              "Anh_Dai_Dien": "default"
 
             })
               .then(function () {
