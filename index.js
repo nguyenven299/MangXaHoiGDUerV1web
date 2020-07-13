@@ -142,7 +142,7 @@ async function access() {
             if (user) {
               this.userId = user.uid
               console.log(user.uid)
-              db.collection("GV").doc(userId).set({
+              db.collection("GV").doc(user.uid).set({
                 uid: userId,
                 "MSGV": id,
                 "Ho_Ten": fullname,
