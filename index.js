@@ -73,8 +73,19 @@ function suaUser(uid) {
 }
 
 function taoUserMoi() {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        window.location.href = "addUser.html";
+      }).catch(function(error) {
+        // An error happened.
+      });
+    } else {
+      window.location.href = "addUser.html";
+    }
+  });
 
-  window.location.href = "addUser.html"
 }
 
 
@@ -156,7 +167,9 @@ async function access() {
                 .then(function (docRef) {
                   this.alert("Đăng ký thành công")
                   window.location.href = "home.html"
+
                 });
+
 
 
               // const back = document.getElementById('cancleAddUser')
